@@ -6,6 +6,11 @@ import java.util.stream.IntStream;
 
 public class LongestSubstringWithoutRepetition {
 
+    /**
+    https://www.programcreek.com/2013/02/leetcode-longest-substring-without-repeating-characters-java/
+    https://www.ideserve.co.in/learn/longest-substring-with-non-repeating-characters
+     **/
+
     public String findLongestSubstringWithoutRepetitionNaive(String input) {
         String longestStr = "";
         for(int i=0;i<input.length();i++) {
