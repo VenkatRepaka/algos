@@ -1,11 +1,14 @@
 package strings;
 
 import java.util.Arrays;
+import java.util.HashSet;
 import java.util.Map;
 import java.util.Set;
 import java.util.stream.Collectors;
 
 public class AllPermutationsString {
+
+    private Set<String> permutations = new HashSet<>();
 
     public void getAllPermutations(char[] input, char[] output, int[] counts, int depth) {
         if(depth >= output.length) {
@@ -39,7 +42,29 @@ public class AllPermutationsString {
 
     public static void main(String[] args) {
         AllPermutationsString allPermutationsString = new AllPermutationsString();
-        Set<String> permutations = allPermutationsString.getAllPermutations("aabc");
+        // allPermutationsString.getAllPermutations("aabc");
+        allPermutationsString.permute("aabc");
+    }
+
+    public void permute(String input) {
+        permuteHelper(input, "");
+        permutations.forEach(System.out::println);
+    }
+
+    public void permuteHelper(String input, String chosen) {
+        if(input.isEmpty()) {
+            permutations.add(chosen);
+        }
+        else {
+            for (int i=0;i<input.length();i++) {
+                // choose
+                char c = input.charAt(i);
+
+                // explore
+                StringBuilder sb = new StringBuilder(input);
+                permuteHelper(sb.deleteCharAt(i).toString(), chosen + c);
+            }
+        }
     }
 
 }
