@@ -1,6 +1,6 @@
 package arrayalgos;
 
-public class SubarrayProductLessThanK {
+public class SubArrayProductLessThanK {
 
     public static void main(String[] args) {
 
