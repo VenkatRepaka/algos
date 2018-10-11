@@ -14,6 +14,7 @@ public class BinaryNode {
 
     public int data;
     public char charData;
+    public int height;
     public BinaryNode left;
     public BinaryNode right;
 
