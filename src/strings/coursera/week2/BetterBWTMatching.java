@@ -2,11 +2,11 @@ package strings.coursera.week2;
 
 import java.util.*;
 
-public class BWTMatching {
+public class BetterBWTMatching {
 
     private String bwtText;
 
-    public BWTMatching(String text) {
+    public BetterBWTMatching(String text) {
         this.bwtText = text;
     }
 
@@ -71,7 +71,7 @@ public class BWTMatching {
     }
 
     public static void main(String[] args) {
-        BWTMatching bwtMatching = new BWTMatching("AGGGAA$");
+        BetterBWTMatching bwtMatching = new BetterBWTMatching("AGGGAA$");
         System.out.println(bwtMatching.findMatches("GA"));
     }
 
