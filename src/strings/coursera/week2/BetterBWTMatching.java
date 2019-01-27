@@ -10,7 +10,7 @@ public class BetterBWTMatching {
         this.bwtText = text;
     }
 
-    public int bwtMatching(String pattern, Map<Character, Integer> starts, Map<Character, List<Integer>> occCountBefore) {
+    public int bwtMatching(String pattern, Map<Character, Integer> firstOccurrences, Map<Character, List<Integer>> occCountBefore) {
         int top = 0;
         int bottom = bwtText.length()-1;
         char character;
@@ -20,7 +20,7 @@ public class BetterBWTMatching {
                 character = pattern.charAt(pattern.length()-1);
                 pattern = pattern.substring(0, pattern.length()-1);
                 if(bwtText.substring(top, bottom+1).indexOf(character) != -1) {
-                    firstOccurence = starts.get(character);
+                    firstOccurence = firstOccurrences.get(character);
                     top = firstOccurence + occCountBefore.get(character).get(top);
                     bottom = firstOccurence + occCountBefore.get(character).get(bottom+1) - 1;
                 }
@@ -36,13 +36,13 @@ public class BetterBWTMatching {
     }
 
     public AbstractMap.SimpleEntry<Map<Character, Integer>, Map<Character, List<Integer>>> mapFirstToLast() {
-        Map<Character, Integer> starts = new HashMap<>();
+        Map<Character, Integer> firstOccurrences = new HashMap<>();
         char[] bwtTextChars = this.bwtText.toCharArray();
         Arrays.sort(bwtTextChars);
         for(int i=0;i<bwtTextChars.length;i++) {
-            starts.putIfAbsent(bwtTextChars[i], i);
+            firstOccurrences.putIfAbsent(bwtTextChars[i], i);
         }
-        System.out.println(starts);
+        System.out.println(firstOccurrences);
         Map<Character, List<Integer>> occCountBefore = new HashMap<>();
         int counter = 0;
         List<Integer> list = null;
@@ -59,7 +59,7 @@ public class BetterBWTMatching {
             occCountBefore.putIfAbsent(ch, list);
         }
         System.out.println(occCountBefore);
-        return new AbstractMap.SimpleEntry(starts, occCountBefore);
+        return new AbstractMap.SimpleEntry(firstOccurrences, occCountBefore);
     }
 
     public int findMatches(String pattern) {
@@ -71,8 +71,8 @@ public class BetterBWTMatching {
     }
 
     public static void main(String[] args) {
-        BetterBWTMatching bwtMatching = new BetterBWTMatching("AGGGAA$");
-        System.out.println(bwtMatching.findMatches("GA"));
+        BetterBWTMatching bwtMatching = new BetterBWTMatching("ATT$AA");
+        System.out.println(bwtMatching.findMatches("A"));
     }
 
 }
