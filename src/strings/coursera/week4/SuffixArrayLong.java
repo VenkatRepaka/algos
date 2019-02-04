@@ -1,6 +1,6 @@
 package strings.coursera.week4;
 
-public class SuffixArrayMatching {
+public class SuffixArrayLong {
 
     public int[] countingSortChar(String text, int[] order) {
         int[] charArray = new int[200];
@@ -53,7 +53,7 @@ public class SuffixArrayMatching {
     }
 
     public static void main(String[] args) {
-        SuffixArrayMatching suffixArrayMatching = new SuffixArrayMatching();
+        SuffixArrayLong suffixArrayMatching = new SuffixArrayLong();
         String text = "ababaa$";
         int[] order = suffixArrayMatching.countingSortChar(text, new int[text.length()]);
         for (int i = 0; i < order.length; i++) {
